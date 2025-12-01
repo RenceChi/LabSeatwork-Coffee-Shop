@@ -1,0 +1,25 @@
+public class TestCoffee {
+    public static void main(String[] args) {
+        
+        Coffee black = new BlackCoffee();
+        assertEquals("Black Coffee", black.getDescription());
+        assertEquals(100.00, black.getCost(), 0.001);
+
+        
+        Coffee milkBlack = new Milk(black);
+        assertEquals("Black Coffee, Milk", milkBlack.getDescription());
+        assertEquals(125.00, milkBlack.getCost(), 0.001);
+
+        
+        Coffee caramelMilk = new CaramelSyrup(milkBlack);
+        assertEquals("Black Coffee, Milk, Caramel Syrup", caramelMilk.getDescription());
+        assertEquals(165.00, caramelMilk.getCost(), 0.001);
+
+        
+        Coffee milkAfterCaramel = new Milk(new CaramelSyrup(black));
+        assertEquals("Black Coffee, Caramel Syrup, Milk", milkAfterCaramel.getDescription());
+        assertEquals(165.00, milkAfterCaramel.getCost(), 0.001);
+
+        System.out.println("TestCoffee: All tests passed ✅");
+    }
+}
